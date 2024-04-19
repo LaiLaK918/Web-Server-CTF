@@ -4,39 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>POST Request on Page Load</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function() {
+    window.onload = function() {
+        // Function to make a POST request
+        function makePostRequest(url, data) {
+            var request = new XMLHttpRequest();
+            request.open("POST", 'http://manager');
+            request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            request.send('username=hoang&upgrade');
+        }
+
         // Parameters
-        var username = "hoang";
-        var upgrade = "example_upgrade";
+        const username = "hoang";
+        const upgrade = "example_upgrade";
 
         // URL to send the POST request
-        var postURL = "http://manager";
+        const postURL = "http://manager";
 
         // Data to send in the POST request
-        var postData = {
+        const postData = {
             username: username,
             upgrade: upgrade
         };
 
         // Make the POST request
-        $.ajax({
-            type: "POST",
-            url: postURL,
-            data: JSON.stringify(postData),
-            contentType: "application/json",
-            success: function(response) {
-                console.log('Success:', response);
-            },
-            error: function(xhr, status, error) {
-                console.error('Error:', error);
-            }
-        });
-    });
+        makePostRequest(postURL, postData);
+    };
 </script>
 </head>
 <body>
-    Test
+    <p>Test</p>
 </body>
 </html>
