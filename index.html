@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POST Request on Page Load</title>
+<script>
+    window.onload = function() {
+        // Function to make a POST request
+        function makePostRequest(url, data) {
+            return fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => console.log('Success:', data))
+            .catch(error => console.error('Error:', error));
+        }
+
+        // Parameters
+        const username = "hoang";
+        const upgrade = "example_upgrade";
+
+        // URL to send the POST request
+        const postURL = "http://localhost:8888";
+
+        // Data to send in the POST request
+        const postData = {
+            username: username,
+            upgrade: upgrade
+        };
+
+        // Make the POST request
+        makePostRequest(postURL, postData);
+    };
+</script>
+</head>
+<body>
+    <p>Test</p>
+</body>
+</html>
