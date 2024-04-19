@@ -13,22 +13,7 @@
             request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             request.send('username=hoang&upgrade');
         }
-
-        // Parameters
-        const username = "hoang";
-        const upgrade = "example_upgrade";
-
-        // URL to send the POST request
-        const postURL = "http://manager";
-
-        // Data to send in the POST request
-        const postData = {
-            username: username,
-            upgrade: upgrade
-        };
-
-        // Make the POST request
-        makePostRequest(postURL, postData);
+        makePostRequest();
     };
 </script>
 </head>
