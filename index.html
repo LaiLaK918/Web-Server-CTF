@@ -4,41 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>POST Request on Page Load</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    window.onload = function() {
-        // Function to make a POST request
-        function makePostRequest(url, data) {
-            return fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => console.log('Success:', data))
-            .catch(error => console.error('Error:', error));
-        }
-
+    $(document).ready(function() {
         // Parameters
-        const username = "hoang";
-        const upgrade = "example_upgrade";
+        var username = "hoang";
+        var upgrade = "example_upgrade";
 
         // URL to send the POST request
-        const postURL = "http://localhost:8888";
+        var postURL = "http://localhost:8888";
 
         // Data to send in the POST request
-        const postData = {
+        var postData = {
             username: username,
             upgrade: upgrade
         };
 
         // Make the POST request
-        makePostRequest(postURL, postData);
-    };
+        $.ajax({
+            type: "POST",
+            url: postURL,
+            data: JSON.stringify(postData),
+            contentType: "application/json",
+            success: function(response) {
+                console.log('Success:', response);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
+    });
 </script>
 </head>
 <body>
-    <p>Test</p>
+    Test
 </body>
 </html>
